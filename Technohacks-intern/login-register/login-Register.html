@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login-Register</title>
+
+    <style>
+
+
+    body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+        background: linear-gradient(45deg,rgb(206, 206, 201) 50%, #a72727 50%);
+
+
+    }
+
+
+
+    .container{
+      
+       display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+      }
+     h2 {
+        color: rgb(255, 255, 255);
+        text-align: center;
+
+    } 
+    .img-box{
+       height: 100px; 
+       background-color: transparent;
+    
+        }  
+
+
+ .input-box input{
+    display: block;
+    margin-bottom: 10px;
+    padding: 5px;
+    border: none;
+    outline: none;
+    
+ }
+
+ .input-box input:hover{
+    border: none;
+    outline: none;
+ }
+ .login-btn,.register-btn{
+    margin: auto;
+    width: 70px;
+    background-color: rgb(139, 28, 28);
+    color: white;
+    border: none;
+    outline: none;
+ }
+
+ small{
+    font-size: small;
+ }
+
+
+ .user-register{
+    display: none;
+
+ }
+    </style>
+</head>
+<body>
+<div class="container">
+<div class="login" id="logs">
+    <img class="img-box"
+    src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg" alt="logo"/>
+
+
+
+        <h2 id="log-head">Login</h2>
+
+        <div class="input-box">
+        
+        <input type="email" name="" id="email" placeholder="Your email" required>
+
+        <input type="password" name="" id="password" placeholder="Enter password" required>
+
+        <input type="submit" value="Login" class="login-btn" id="login1" onclick="check()">
+        <small>Don't have a Account? <a href="#" id="createnew" onclick="change1()">Create New</a></small>
+
+        </div>
+
+    </div>
+
+    
+    <div class="user-register " id="user-register">
+        <img class="img-box"
+        src="https://png.pngtree.com/png-vector/20191110/ourmid/pngtree-avatar-icon-profile-icon-member-login-vector-isolated-png-image_1978396.jpg" alt="logo"/>
+    
+        <h2 id="reg-head">Register Now</h2>
+        <div class="input-box">
+
+
+       <input type="text" name="" id="name" placeholder="Your Username" required>
+        <input type="email" name="" id="register-email" placeholder="Your email" required>
+       <input type="password" name="" id="register-password" placeholder="Enter password" required>
+       <input type="password" name="" id="register-password2" placeholder="confrim password" required>
+
+        <input type="submit" value="register" class="register-btn" id="register1" onclick="regiter()">
+
+        <p>Already have a account <a href="#" id="exciting" onclick="change2()">Login</a></p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    var created = document.getElementById('createnew');
+    var register = document.getElementsByClassName('.user-register');
+
+    const email1 = document.getElementById("email");
+    const password1 = document.getElementById("password");
+
+    var regName = document.getElementById("name");
+    const regemail = document.getElementById("register-email");
+    const  regPas1 = document.getElementById("register-password");
+    const  regPas2 = document.getElementById("register-password2");
+
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+
+
+
+
+    function change1(){
+
+document.getElementById("logs").style.display="none";
+document.getElementById("user-register").style.display="block";
+document.getElementById("log-head").style.innerHTML="REGISTER";
+
+
+    }
+    function change2(){
+
+document.getElementById("logs").style.display="block";
+document.getElementById("user-register").style.display="none";
+document.getElementById("reg-head").style.innerHTML="LOGIN";
+
+ }
+
+ function check(){
+    if (email1.value=="" || password1.value=="") {
+        alert("Enter Correct EMail and PAssword");
+
+    }
+    else{
+        email1.value="";
+        password1.value="";
+        alert("Login succesfull");
+    }
+ }
+
+ function regiter(){
+
+    if (regName.value.length < 6 || regPas1.value.length < 6){
+        alert('Username and Password must be at least 6 characters long.');
+
+    }
+
+    else if(regPas2.value !== regPas1.value){
+        alert("password not same");
+    }
+     else if(!emailPattern.test(email)) {
+      alert('Invalid email address.');
+  return;
+}
+
+ }
+</script>
+</body>
+
+</html>
